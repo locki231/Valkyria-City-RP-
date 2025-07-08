@@ -233,8 +233,10 @@
 </div>
 
 
-<!-- 🟢 STATUT SERVEUR FIVEM -->
-<div id="server-status" style="margin-top: 30px; font-size: 1.2rem; color: #00bfff; text-shadow: 0 0 5px #00bfff;"></div>
+<!-- 👥 Section de statut du serveur déplacée ici -->
+<section class="section">
+  <h2>Statut du serveur</h2>
+  <p id="playerCount">Chargement des données...</p>
 </section>
 
   </section>
@@ -271,32 +273,28 @@
     </div>
   </footer>
 
- <!-- 🔧 SCRIPT DE STATUT SERVEUR -->
-<script>
-  const serverIP = "136.243.177.111:30085"; // 🔁 À remplacer par ton IP réelle
-  const statusElement = document.getElementById("server-status");
+  <!-- Script pour afficher le nombre de joueurs -->
+  <script>
+    async function fetchPlayerCount() {
+      try {
+        const response = await fetch("https://servers-frontend.fivem.net/api/servers/single/kjz4ba");
+        const data = await response.json();
 
-  async function fetchServerStatus() {
-    try {
-      const playersRes = await fetch(`http://${serverIP}/players.json`);
-      const players = await playersRes.json();
-      const infoRes = await fetch(`http://${serverIP}/info.json`);
-      const info = await infoRes.json();
+        const players = data.Data.clients;
+        const maxPlayers = data.Data.sv_maxclients;
 
-      const online = players.length;
-      const max = info.vars.sv_maxClients || 48;
-
-      statusElement.innerHTML = `🟢 <strong>Serveur en ligne</strong> – ${online}/${max} joueurs`;
-      statusElement.style.color = "#00ff88";
-    } catch (e) {
-      statusElement.innerHTML = `🔴 <strong>Serveur hors ligne</strong>`;
-      statusElement.style.color = "#ff5555";
+        document.getElementById("playerCount").innerText =
+          `👥 Joueurs connectés : ${players} / ${maxPlayers}`;
+      } catch (error) {
+        document.getElementById("playerCount").innerText =
+          "❌ Impossible de charger les données serveur.";
+        console.error(error);
+      }
     }
-  }
 
-  fetchServerStatus();
-  setInterval(fetchServerStatus, 30000); // Refresh chaque 30s
-</script>
+    fetchPlayerCount();
+    setInterval(fetchPlayerCount, 30000); // Met à jour toutes les 30 secondes
+  </script>
 
 </body>
 </html>
