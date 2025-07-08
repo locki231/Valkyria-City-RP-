@@ -117,7 +117,6 @@
       transform: scale(1.05);
     }
 
-    /* Galerie agrandie */
     .slider-container {
       overflow: hidden;
       width: 100%;
@@ -171,6 +170,13 @@
       text-shadow: 0 0 6px #00bfff;
     }
 
+    #playerCount {
+      font-size: 1.4rem;
+      color: #00ff88;
+      text-shadow: 0 0 5px #00ff88;
+      margin-top: 15px;
+    }
+
     @media (max-width: 700px) {
       .features {
         flex-direction: column;
@@ -189,59 +195,10 @@
         width: 90vw;
         height: auto;
       }
+
       .slider-container {
         height: auto;
       }
-      .rules-dropdown {
-  position: relative;
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.rules-btn {
-  padding: 12px 24px;
-  background-color: #222;
-  color: #00bfff;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 12px #00bfff;
-  transition: background 0.3s ease, transform 0.2s;
-}
-
-.rules-btn:hover {
-  background-color: #1a1a1a;
-  transform: scale(1.05);
-}
-
-.rules-content {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #111;
-  box-shadow: 0 0 15px #00bfff;
-  border-radius: 10px;
-  z-index: 1000;
-  min-width: 250px;
-  text-align: left;
-  padding: 10px 0;
-}
-
-.rules-content a {
-  display: block;
-  padding: 12px 20px;
-  color: white;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.rules-content a:hover {
-  background-color: #1e1e1e;
-}
-
     }
   </style>
 </head>
@@ -251,14 +208,11 @@
     <img src="logo-valkyria.png" alt="Logo Valkyria RP" />
     <h1>Valkyria RP</h1>
     <a href="https://discord.gg/DbQNg9QZ6E" target="_blank" class="discord-btn">Rejoindre le Discord</a>
- <div style="margin-top: 20px;">
-  <a href="https://docs.google.com/document/d/1VY6vN_WNlXGHd7K_kQsOA-6YDvWKLIw0NBIrEG7q1Mc/edit?tab=t.0#heading=h.seaw3myl1289" target="_blank" class="discord-btn">📘 Règlement Général</a>
-  <a href="https://docs.google.com/document/d/1mSs8CyY61NP4btDTA--6LcUtHZ9hI6spmrbmfnqcUFw/edit?tab=t.0#heading=h.by7bqnbv5560" target="_blank" class="discord-btn">💀 Règlement Criminel</a>
-  <a href="https://docs.google.com/document/d/1IxxwWVkoQblM3Xd54uWK3920NKTa7S4JQPlKRl_2NqM/edit?tab=t.0#heading=h.1n729agg9htl" target="_blank" class="discord-btn">⚖️ Règlement Légal</a>
-</div>
-  </div>
-</div>
-
+    <div style="margin-top: 20px;">
+      <a href="https://docs.google.com/document/d/1VY6vN_WNlXGHd7K_kQsOA-6YDvWKLIw0NBIrEG7q1Mc/edit" target="_blank" class="discord-btn">📘 Règlement Général</a>
+      <a href="https://docs.google.com/document/d/1mSs8CyY61NP4btDTA--6LcUtHZ9hI6spmrbmfnqcUFw/edit" target="_blank" class="discord-btn">💀 Règlement Criminel</a>
+      <a href="https://docs.google.com/document/d/1IxxwWVkoQblM3Xd54uWK3920NKTa7S4JQPlKRl_2NqM/edit" target="_blank" class="discord-btn">⚖️ Règlement Légal</a>
+    </div>
   </header>
 
   <section class="section">
@@ -266,7 +220,6 @@
     <p>Un serveur FiveM sérieux, équilibré, avec un RP riche et une communauté soudée.</p>
     <a href="fivem://connect/kjz4ba" class="connect-btn">🔗 Rejoindre le serveur maintenant</a>
 
-    <!-- Galerie RP placée juste après le bouton -->
     <div style="margin-top: 90px;">
       <h2>Galerie RP</h2>
       <div class="slider-container">
@@ -274,7 +227,6 @@
           <img src="img1.png" alt="RP 1" />
           <img src="img2.png" alt="RP 2" />
           <img src="img3.png" alt="RP 3" />
-          <!-- Ajoute plus d'images si tu veux -->
         </div>
       </div>
     </div>
@@ -303,8 +255,12 @@
     <p>Nom sur FiveM : <strong>Valkyria City RP</strong></p>
     <p>Lien de connexion directe :</p>
     <a href="fivem://connect/kjz4ba" class="connect-btn">🔗 Rejoindre le serveur maintenant</a>
-    <p style="margin-top: 10px;">
-    </p>
+  </section>
+
+  <!-- 👥 Section de statut du serveur -->
+  <section class="section">
+    <h2>Statut du serveur</h2>
+    <p id="playerCount">Chargement des données...</p>
   </section>
 
   <footer>
@@ -314,3 +270,28 @@
     </div>
   </footer>
 
+  <!-- Script pour afficher le nombre de joueurs -->
+  <script>
+    async function fetchPlayerCount() {
+      try {
+        const response = await fetch("https://servers-frontend.fivem.net/api/servers/single/kjz4ba");
+        const data = await response.json();
+
+        const players = data.Data.clients;
+        const maxPlayers = data.Data.sv_maxclients;
+
+        document.getElementById("playerCount").innerText =
+          `👥 Joueurs connectés : ${players} / ${maxPlayers}`;
+      } catch (error) {
+        document.getElementById("playerCount").innerText =
+          "❌ Impossible de charger les données serveur.";
+        console.error(error);
+      }
+    }
+
+    fetchPlayerCount();
+    setInterval(fetchPlayerCount, 30000); // Met à jour toutes les 30 secondes
+  </script>
+
+</body>
+</html>
