@@ -285,7 +285,7 @@
       const info = await infoRes.json();
 
       const online = players.length;
-      const max = info.vars.sv_maxClients || 64;
+      const max = info.vars.sv_maxClients || 48;
 
       statusElement.innerHTML = `🟢 <strong>Serveur en ligne</strong> – ${online}/${max} joueurs`;
       statusElement.style.color = "#00ff88";
