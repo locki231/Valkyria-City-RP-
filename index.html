@@ -12,44 +12,6 @@
       color: white;
     }
 
-    /* --- Galerie agrandie --- */
-    .slider-container {
-      overflow: hidden;
-      width: 100%;
-      max-width: 1400px; /* un peu plus large */
-      margin: 40px auto 0;
-      border-radius: 10px;
-      box-shadow: 0 0 25px rgba(0,191,255,0.3);
-      height: 280px; /* augmenté pour une meilleure hauteur */
-    }
-
-    .slider-track {
-      display: flex;
-      width: max-content;
-      animation: slideGallery 25s linear infinite;
-      align-items: center;
-      height: 100%;
-    }
-
-    .slider-track img {
-      width: 420px;  /* agrandi */
-      height: 260px; /* agrandi */
-      object-fit: cover;
-      margin: 10px;
-      border-radius: 10px;
-      transition: transform 0.3s;
-      flex-shrink: 0;
-    }
-
-    .slider-track img:hover {
-      transform: scale(1.05);
-    }
-
-    @keyframes slideGallery {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
     header {
       text-align: center;
       padding: 60px 20px 40px;
@@ -154,6 +116,44 @@
       transform: scale(1.05);
     }
 
+    /* Galerie agrandie */
+    .slider-container {
+      overflow: hidden;
+      width: 100%;
+      max-width: 1400px;
+      margin: 40px auto 0;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0,191,255,0.3);
+      height: 280px;
+    }
+
+    .slider-track {
+      display: flex;
+      width: max-content;
+      animation: slideGallery 25s linear infinite;
+      align-items: center;
+      height: 100%;
+    }
+
+    .slider-track img {
+      width: 420px;
+      height: 260px;
+      object-fit: cover;
+      margin: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .slider-track img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes slideGallery {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     footer {
       background: #111;
       text-align: center;
@@ -189,26 +189,12 @@
         height: auto;
       }
       .slider-container {
-        height: auto; /* adapte la hauteur en mobile */
+        height: auto;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Galerie RP déplacée au début -->
-  <section class="section">
-    <h2>Galerie RP</h2>
-    <div class="slider-container">
-      <div class="slider-track">
-        <img src="img1.png" alt="RP 1" />
-        <img src="img2.png" alt="RP 2" />
-        <img src="img3.png" alt="RP 3" />
-        <img src="img4.png" alt="RP 4" />
-        <!-- Ajoute d’autres images si tu veux -->
-      </div>
-    </div>
-  </section>
 
   <header>
     <img src="logo-valkyria.png" alt="Logo Valkyria RP" />
@@ -220,6 +206,20 @@
     <h2>Bienvenue sur Valkyria RP</h2>
     <p>Un serveur FiveM sérieux, équilibré, avec un RP riche et une communauté soudée.</p>
     <a href="fivem://connect/kjz4ba" class="connect-btn">🔗 Rejoindre le serveur maintenant</a>
+
+    <!-- Galerie RP placée juste après le bouton -->
+    <div style="margin-top: 40px;">
+      <h2>Galerie RP</h2>
+      <div class="slider-container">
+        <div class="slider-track">
+          <img src="img1.png" alt="RP 1" />
+          <img src="img2.png" alt="RP 2" />
+          <img src="img3.png" alt="RP 3" />
+          <img src="img4.png" alt="RP 4" />
+          <!-- Ajoute plus d'images si tu veux -->
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section">
@@ -254,4 +254,7 @@
   <footer>
     &copy; 2025 Valkyria RP | Tous droits réservés.
     <div class="credits">
-      💙 D
+      💙 Dédicace aux créateurs : <strong>Tark3v47</strong>, <strong>BR1D0U</strong> & <strong>locki231</strong> (créateur du site)
+    </div>
+  </footer>
+
