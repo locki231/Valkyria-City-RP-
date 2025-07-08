@@ -272,28 +272,32 @@
     </div>
   </footer>
 
-  <!-- Script pour afficher le nombre de joueurs -->
-  <script>
-    async function fetchPlayerCount() {
-      try {
-        const response = await fetch("https://servers-frontend.fivem.net/api/servers/single/kjz4ba");
-        const data = await response.json();
+ <!-- 🔧 SCRIPT DE STATUT SERVEUR -->
+<script>
+  const serverIP = "136.243.177.111:30085"; // 🔁 À remplacer par ton IP réelle
+  const statusElement = document.getElementById("server-status");
 
-        const players = data.Data.clients;
-        const maxPlayers = data.Data.sv_maxclients;
+  async function fetchServerStatus() {
+    try {
+      const playersRes = await fetch(`http://${serverIP}/players.json`);
+      const players = await playersRes.json();
+      const infoRes = await fetch(`http://${serverIP}/info.json`);
+      const info = await infoRes.json();
 
-        document.getElementById("playerCount").innerText =
-          `👥 Joueurs connectés : ${players} / ${maxPlayers}`;
-      } catch (error) {
-        document.getElementById("playerCount").innerText =
-          "❌ Impossible de charger les données serveur.";
-        console.error(error);
-      }
+      const online = players.length;
+      const max = info.vars.sv_maxClients || 64;
+
+      statusElement.innerHTML = `🟢 <strong>Serveur en ligne</strong> – ${online}/${max} joueurs`;
+      statusElement.style.color = "#00ff88";
+    } catch (e) {
+      statusElement.innerHTML = `🔴 <strong>Serveur hors ligne</strong>`;
+      statusElement.style.color = "#ff5555";
     }
+  }
 
-    fetchPlayerCount();
-    setInterval(fetchPlayerCount, 30000); // Met à jour toutes les 30 secondes
-  </script>
+  fetchServerStatus();
+  setInterval(fetchServerStatus, 30000); // Refresh chaque 30s
+</script>
 
 </body>
 </html>
