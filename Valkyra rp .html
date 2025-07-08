@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valkyria RP - FiveM</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: #111;
+      box-shadow: 0 0 15px #00bfff44;
+    }
+
+    header img {
+      max-width: 180px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 15px #00bfff);
+      animation: pulseGlow 2.5s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% { filter: drop-shadow(0 0 10px #00bfff); }
+      50% { filter: drop-shadow(0 0 20px #00bfff); }
+      100% { filter: drop-shadow(0 0 10px #00bfff); }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #00bfff;
+      text-shadow: 0 0 10px #00bfff;
+    }
+
+    .discord-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #5865F2;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+      box-shadow: 0 0 10px #5865F2;
+    }
+
+    .discord-btn:hover {
+      background-color: #4752C4;
+      transform: scale(1.05);
+    }
+
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #00bfff;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 6px #00bfff;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 12px;
+      width: 260px;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    }
+
+    .feature h3 {
+      margin-top: 0;
+      color: #00ff88;
+      text-shadow: 0 0 5px #00ff88;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 30px 20px 10px;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+
+    .credits {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #00bfff;
+      text-shadow: 0 0 6px #00bfff;
+    }
+
+    @media (max-width: 700px) {
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .feature {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo-valkyria.png" alt="Logo Valkyria RP">
+    <h1>Valkyria RP</h1>
+    <a href="https://discord.gg/tonserveur" target="_blank" class="discord-btn">Rejoindre le Discord</a>
+  </header>
+
+  <section class="section">
+    <h2>Bienvenue sur Valkyria RP</h2>
+    <p>Un serveur FiveM sérieux, équilibré, avec un RP riche et une communauté soudée.</p>
+  </section>
+
+  <section class="section">
+    <h2>Fonctionnalités</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Économie Réaliste</h3>
+        <p>Un système d'argent, salaires, commerces et marchés dynamiques.</p>
+      </div>
+      <div class="feature">
+        <h3>Véhicules Moddés</h3>
+        <p>Imports rares, tuning, garages RP et personnalisations uniques.</p>
+      </div>
+      <div class="feature">
+        <h3>Factions Immersives</h3>
+        <p>Police, EMS, armée, justice, gangs, et même un gouvernement RP.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Comment rejoindre ?</h2>
+    <p>Nom sur FiveM : <strong>Valkyria RP</strong></p>
+    <p>Connexion directe : <strong>fivem://ip.serveur.com</strong></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Valkyria RP | Tous droits réservés.
+    <div class="credits">
+      💙 Dédicace aux créateurs : <strong>Tark3v47</strong>, <strong>BR1D0U</strong> & <strong>locki231</strong> (créateur du site)
+    </div>
+  </footer>
+
+</body>
+</html>
